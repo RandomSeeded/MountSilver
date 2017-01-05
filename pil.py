@@ -7,7 +7,7 @@
 from mss.exception import ScreenshotError
 from mss.factory import mss
 from PIL import Image
-
+import io
 
 def main():
     # type: () -> int
@@ -32,8 +32,13 @@ def main():
                 print(size)
                 print(img)
 		print(sct)
-		for i in xrange(1920):
-			print(sct.image[i])
+		print(sct.image)
+
+		bytesio_image = io.BytesIO(sct.image)
+		print(bytesio_image.getValue())
+
+		# for i in xrange(len(sct.image)):
+		# 	print(sct.image[i])
 
                 # And save it!
                 # output = 'monitor-{0}.png'.format(num)
